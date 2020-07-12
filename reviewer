@@ -1,10 +1,13 @@
-Hi there this is only my  personal notes (not in technical way para chill lang ) & puns , it’s already 3AM ,para sa reviewer ko po ito . Yes you can share this. and credits  to Youtube Channel:  CodAffection for this CRUD tutorial https://www.youtube.com/watch?v=4fWWn2Pe2Mk. Siya po talaga ang source. Gusto ko lang mag-aral . Stay Safe and Wear Mask. 
+Hi there this is only my  personal notes (not in technical way para chill lang ) & puns , it’s already 3AM ,para sa reviewer ko po ito . 
+Yes you can share this. and credits  to Youtube Channel:  CodAffection for this CRUD tutorial https://www.youtube.com/watch?v=4fWWn2Pe2Mk. 
+Siya po talaga ang source. Gusto ko lang mag-aral . Stay Safe and Wear Mask. 
 
 
 CODE WITH CAUTION. lagi mag test sa local wag sa live. ** WAG TULARAN **
 SELECT lang wag lang DROP DB hahahaha ;)
 
-In this reviewer project I am using MAC OS, so some of my links  might not be applicable to you. So hahha ignore it o seen mo na lang katulad ng ginawa ng iba dyan. 
+In this reviewer project I am using MAC OS, so some of my links  might not be applicable to you.
+_______________________________________________________________________________________________________________________________________
 
 Tools Needed:
 Laptop, Internet, Presence of Mind, Focus, kape..  de joke
@@ -15,53 +18,51 @@ Postman
 XAMPP
  
 Start na us :
+_______________________________________________________________________________________________________________________________________
 
 1. Start XAMPP (MySQL and Apache)
+_______________________________________________________________________________________________________________________________________
 2. Create Project Folder sa XAMPP > htdocs
+_______________________________________________________________________________________________________________________________________
 3. then Open VSCode, Open the Project Folder na ginawa mo sa htdocs
+_______________________________________________________________________________________________________________________________________
 4. Sa VSCode Menu , Click Terminal , New Terminal
-
+_______________________________________________________________________________________________________________________________________
 5. Sa Terminal i-path mo yung Project Folder mo .
 Paano ? 
 Sa Terminal type cd , then DRAG mo na lang sa Terminal . yung project folder mo . 
 
 
 ito na mag tataype ka pang hacker o mala pang brainy .. pero kaya natin ito. 
-
+_______________________________________________________________________________________________________________________________________
 6. Sa Terminal type, npm init  
 
 so enter enter lang
 Then may nagtanong May sahod na ba? 
 Sasagot ka  syempre kahit wala pa.
-
+_______________________________________________________________________________________________________________________________________
   Is this ok? (yes)
 7. Sa Terminal Type : yes
-
+_______________________________________________________________________________________________________________________________________
 8.  Mag iinstall tayo .  Install mysql, body-parser, express .
 Links:
 https://www.npmjs.com/package/mysql
 https://www.npmjs.com/package/body-parser
 https://www.npmjs.com/package/express
 
-Duh! ano ma-install dyan eh link lang yan? Mag google ka.
-
 npm install —save library@version library@version	
+npm install --save express@4.17.1 mysql@2.18.1 body-parser@1.19.0
 
-or see tutorial 
-_______
-9. Open MySQL Workbench  lagay mo yung table at procedural statement.
-Q: ano  yan sis? 
-A: Para sa database ito, SQL sis. 
+Nag install ako agad ng nodemon, https://www.npmjs.com/package/nodemod for faster debugging
+sudo npm i g- nodemon
+
 
 Create a database: 
 
-Use EmployeeDB; CREATE TABLE `employee` ( `EmpID` int(11) NOT NULL AUTO_INCREMENT, `Name` varchar(45) DEFAULT NULL, `EmpCode` varchar(45) DEFAULT NULL, `Salary` int(11) DEFAULT NULL, PRIMARY KEY (`EmpID`) ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; LOCK TABLES `employee` WRITE; INSERT INTO `employee` VALUES (1, 'Gavin Cortez', 'EMP90', 265400),(2, 'Quinn Flynn', 'EMP94', 364600),(3, 'Doris Wilder', 'EMP06', 316400),(4, 'Hermione Butler', 'EMP965', 417500); UNLOCK TABLES;  
-
-
-Q: Haha pre pwede pakopya?
-A: geh lang. 
-Ito naman para sa procedural. Ikaw na bahala mag save.
-
+Use EmployeeDB; CREATE TABLE `employee` ( `EmpID` int(11) NOT NULL AUTO_INCREMENT, `Name` varchar(45) DEFAULT NULL, `EmpCode` varchar(45) DEFAULT NULL,
+`Salary` int(11) DEFAULT NULL, PRIMARY KEY (`EmpID`) ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; 
+LOCK TABLES `employee` WRITE; INSERT INTO `employee` VALUES (1, 'Gavin Cortez', 'EMP90', 265400),(2, 'Quinn Flynn', 'EMP94', 364600),
+(3, 'Doris Wilder', 'EMP06', 316400),(4, 'Hermione Butler', 'EMP965', 417500); UNLOCK TABLES;  
 
 Create a Procedural Statement: 
  
@@ -90,9 +91,9 @@ END IF;
 SELECT _EmpID as 'EmpID';
 END
  
-
+_______________________________________________________________________________________________________________________________________
 Click APPLY : then ito makikita mo : 
-
+_______________________________________________________________________________________________________________________________________
 USE `EmployeeB`;
 DROP procedure IF EXISTS `EmployeeAddOrEdit`;
 
@@ -125,18 +126,11 @@ SELECT _EmpID as 'EmpID';
 END$$
 
 DELIMITER ;
-_______
-
-
-Ang hindi marunong lumingon sa pinangalingan ay hindi makakarating sa paroroonan."
-Balik sa VSCode
-
-10. Create an index.js file in your project folder 
-_______
-
-
+_______________________________________________________________________________________________________________________________________
+10. IN VSCDOE - Create an index.js file in your project folder 
+_______________________________________________________________________________________________________________________________________
 11. Time to CODE .
-
+_______________________________________________________________________________________________________________________________________
 const mysql = require('mysql');
 const express = require('express');
 var app = express();
@@ -185,35 +179,34 @@ app.get('/employees/:id',  (req,res)=>{
     });
 });
 
-
-NOTES FOR PART 11:  sa intial part gumamit si Sir ng console .log then pinaltan din niya . Observe niyo ang difference
-
+_______________________________________________________________________________________________________________________________________
+ /* COMPASRION NOTES FOR PART 1: sa intial part gumamit si Sir ng console .log then pinaltan din niya . Observe niyo ang difference */
 
 // you can see in browser
-app.get('/employees', (req,res)=>{
-mysqlConnection.query('SELECT * FROM employee',(err,rows,fields) => {
-if(!err)
-res.send(rows);
-// console.log(rows);
-else
-console.log(err);
-});
+  app.get('/employees', (req,res)=>{
+  mysqlConnection.query('SELECT * FROM employee',(err,rows,fields) => {
+  if(!err)
+     res.send(rows);
+    // console.log(rows);
+  else
+      console.log(err);
+    });
 });
 
 //you can see terminal
 app.get('/employees', (res,req)=>{
 mysqlConnection.query('SELECT * FROM employee',(err,rows,fields) => {
-if(!err)
-res.send(rows);
-// console.log(rows);
-else
-console.log(err);
-});
+  if(!err)
+    res.send(rows);
+    // console.log(rows);
+  else
+    console.log(err);
+   });
 });
 
-_________
+_______________________________________________________________________________________________________________________________________
 12. CODE AGAIN : 
-
+_______________________________________________________________________________________________________________________________________
 
 //delete EMPLOYEE BY ID
 app.delete('/employees/:id',  (req,res)=>{
@@ -256,13 +249,24 @@ app.put('/employees', (req,res) => {
 
 });
 
+_______________________________________________________________________________________________________________________________________
+COMPILE TIME:
 
-_________
+GET 
+Open Postman :
+1. In Launchpad Tab , Click "Create a Request"
+2. On the Left side click "GET" , in the textfield type : http://localhost:3000/employees
+3. Select "Body"
+4. Select Radio Button "raw"
+5. Drop down , Select JSON
+6. SEND 
+7. Result: All data from the database 
 
-Links that might help you along the wae:
+POST
+_______________________________________________________________________________________________________________________________________
 
+Links that might help you along the WAY:
 check if it listens to port 3000: https://stackoverflow.com/questions/18008620/node-js-express-js-app-only-works-on-port-3000
-
 In this solution for port 3000: try to run this code:
 
 CODE:
@@ -294,8 +298,7 @@ possible sa version ng mysql mo yan
 Sagot nakuha ko ay : I had the same problem when I updated XAMPP from xampp-osx-7.2.10 to 7.3.9 in MacOS Mohave. So the solution was:
 Find the file mysql_upgrade in "Macintosh HD⁩ ▸ ⁨Applications⁩ ▸ ⁨XAMPP⁩ ▸ ⁨xamppfiles⁩ ▸ ⁨bin⁩" and double click on it.
 
+_______________________________________________________________________________________________________________________________________
 
-_____
-PS di ako gumamit ng nodemod
-______
+
 
